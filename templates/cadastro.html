@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Cadastro{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <!-- Container principal -->
+    <div class="login-container d-flex shadow p-4 rounded-4" style="background-color: #2a2a2a; max-width: 900px; width: 100%;">
+        
+        <!-- Lado esquerdo: Logo -->
+        <div class="logo-side d-flex flex-column justify-content-center align-items-center me-4" style="flex: 1;">
+            <img src="{{ url_for('static', filename='img/icon.png') }}" class="login-logo">
+            <h2 style="color: #ffffff; text-align:center;">HeroManager</h2>
+        </div>
+
+        <!-- Lado direito: Formulário -->
+        <div class="form-side" style="flex: 1;">
+            <h3 class="text-center mb-4">Criar Conta</h3>
+
+            <form action="/cadastro" method="POST">
+                <div class="mb-3">
+                    <label>Nome</label>
+                    <input type="text" name="nome" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label>CPF</label>
+                    <input type="text" name="cpf" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label>Senha</label>
+                    <input type="password" name="senha" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label>Planeta</label>
+                    <input type="text" name="planeta" class="form-control" required>
+                </div>
+
+                <button class="btn-login-neon w-100">Entrar</button>
+            </form>
+
+            <div class="text-center mt-3">
+                <a href="/" style="color: #4bbdff;">Já possui conta? Faça login</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body { background-color: #1a1a1a; color: #fff; }
+    .form-control {
+        background-color: #111;
+        border: 1px solid #4bbdff33;
+        color: #fff;
+        border-radius: 8px;
+    }
+    .form-control:focus {
+        background-color: #111;
+        border-color: #4bbdff;
+        box-shadow: 0 0 10px #4bbdff55;
+        color: #fff;
+    }
+    .btn-primary:hover {
+        background-color: #3399ff;
+    }
+</style>
+{% endblock %}

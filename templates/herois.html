@@ -1,0 +1,49 @@
+<!-- templates/herois.html -->
+{% extends "base.html" %}
+{% block title %}Heróis{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center">Lista de Heróis</h2>
+<div class="row">
+    {% for h in herois %}
+    <div class="col-md-3 mb-4">
+        <div class="card h-100 shadow-sm border-0 hero-card text-white" style="background-color: 
+            {% if h.classe_id == 1 %}#d9534f{% elif h.classe_id == 2 %}#5bc0de{% elif h.classe_id == 3 %}#5cb85c{% elif h.classe_id == 4 %}#292b2c{% elif h.classe_id == 5 %}#f0ad4e{% elif h.classe_id == 6 %}#9b59b6{% else %}#777{% endif %};">
+            
+            <!-- Imagem do herói -->
+            <img src="{{ url_for('static', filename='img/herois/' + h.imagem_url) }}" 
+                 class="card-img-top" 
+                 alt="{{ h.nome }}" 
+                 onerror="this.src='{{ url_for('static', filename='img/herois/default.png') }}';">
+
+            <div class="card-body">
+                <h4>{{ h.id }} - {{ h.nome }}</h4>
+                <p><strong>Classe:</strong> {{ h.classe }}</p>
+                
+                <!-- Barras de status -->
+                <div class="mb-1">
+                    <strong>Força:</strong>
+                    <div class="progress">
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: {{ h.forca }}%;" aria-valuenow="{{ h.forca }}" aria-valuemin="0" aria-valuemax="100">{{ h.forca }}</div>
+                    </div>
+                </div>
+                <div class="mb-1">
+                    <strong>Defesa:</strong>
+                    <div class="progress">
+                        <div class="progress-bar bg-secondary" role="progressbar" style="width: {{ h.defesa }}%;" aria-valuenow="{{ h.defesa }}" aria-valuemin="0" aria-valuemax="100">{{ h.defesa }}</div>
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <strong>Velocidade:</strong>
+                    <div class="progress">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: {{ h.velocidade }}%;" aria-valuenow="{{ h.velocidade }}" aria-valuemin="0" aria-valuemax="100">{{ h.velocidade }}</div>
+                    </div>
+                </div>
+
+                <a href="/heroi/{{ h.id }}" class="btn btn-light w-100">Detalhes</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

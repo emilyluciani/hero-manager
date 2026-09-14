@@ -1,0 +1,104 @@
+<!-- templates/perfil.html -->
+{% extends "base.html" %}
+{% block title %}Perfil{% endblock %}
+
+{% block content %}
+<h3 class="text-center mb-4">Meu Perfil</h3>
+<div class="row justify-content-center align-items-start mb-5">
+    <!-- Coluna esquerda: Foto do usuário + upload -->
+    <div class="col-md-3 text-center" style="margin-top: 30px;">
+        <img src="{{ url_for('static', filename='img/usuarios/' ~ (user.foto if user.foto else 'avatar_default.png')) }}"
+            alt="Foto do usuário" 
+            class="rounded-circle mb-3"
+            style="width: 190px; height: 190px; object-fit: cover; border: 3px solid #ffffff;">
+
+        <form action="/perfil/upload_foto" method="POST" enctype="multipart/form-data">
+            <input type="file" name="foto" id="fotoInput" style="display:none;" onchange="this.form.submit()">
+            <label for="fotoInput" 
+                class="minimal-upload-btn">
+                Escolher foto
+            </label>
+        </form>
+
+        <style>
+        .minimal-upload-btn {
+            display: inline-block;
+            width: 60%;
+            padding: 8px 0;
+            text-align: center;
+            background-color: #4bbdff33; /* leve transparência */
+            color: #4bbdff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .minimal-upload-btn:hover {
+            background-color: #4bbdff55;
+            color: #fff;
+        }
+        </style>
+    </div>
+
+    <!-- Coluna direita: Dados do usuário -->
+    <div class="col-md-5">
+        <form action="/perfil" method="POST">
+            <div class="mb-3">
+                <label>Nome</label>
+                <input name="nome" value="{{ user.nome }}" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label>Email</label>
+                <input name="email" value="{{ user.email }}" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label>Planeta</label>
+                <input name="planeta" value="{{ user.planeta }}" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label>CPF</label>
+                <input value="{{ user.cpf }}" class="form-control" readonly>
+            </div>
+
+            <button class="btn btn-success w-100">Salvar alterações</button>
+        </form>
+    </div>
+</div>
+
+<hr class="my-5">
+
+<!-- Equipe do usuário -->
+<h4 class="text-center mb-3">Minha Equipe</h4>
+<div class="d-flex justify-content-center gap-3 mb-5">
+    {% for h in equipe %}
+    <div style="width: 260px;">
+        <div class="card h-100 text-white" style="background-color:
+            {% if h.classe_id == 1 %}#d9534f
+            {% elif h.classe_id == 2 %}#5bc0de
+            {% elif h.classe_id == 3 %}#5cb85c
+            {% elif h.classe_id == 4 %}#292b2c
+            {% elif h.classe_id == 5 %}#f0ad4e
+            {% elif h.classe_id == 6 %}#9b59b6
+            {% else %}#777
+            {% endif %};">
+            
+            <img src="{{ url_for('static', filename='img/herois/' ~ h.imagem_url) }}" 
+                 class="card-img-top" 
+                 alt="{{ h.nome }}" 
+                 style="height: 290px; object-fit: cover;"
+                 onerror="this.src='{{ url_for('static', filename='img/herois/default.png') }}';">
+
+            <div class="card-body p-2 text-center">
+                <h6 class="card-title mb-0">{{ h.id }} - {{ h.nome }}</h6>
+                <small>{{ h.classe }}</small>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

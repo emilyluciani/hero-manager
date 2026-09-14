@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Resultados da Busca{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-4">
+    Resultados para: "<span class="text-info">{{ termo }}</span>"
+</h2>
+
+{% if herois|length == 0 %}
+<!--mensagem para busca sem resultados-->
+    <p class="text-center text-secondary">Nenhum herói encontrado...</p>
+{% endif %}
+
+<div class="row">
+    <!-- Percorre os heróis encontrados -->
+    {% for h in herois %}
+        <div class="col-md-3 mb-4">
+            <!-- Card do herói com cor dinâmica baseada na classe -->
+            <div class="card h-100 shadow-sm border-0 hero-card text-white" style="background-color: 
+                {% if h.classe_id == 1 %}#d9534f{% elif h.classe_id == 2 %}#5bc0de{% elif h.classe_id == 3 %}#5cb85c{% elif h.classe_id == 4 %}#292b2c{% elif h.classe_id == 5 %}#f0ad4e{% elif h.classe_id == 6 %}#9b59b6{% else %}#777{% endif %};">
+                
+                <img src="{{ url_for('static', filename='img/herois/' + h.imagem_url) }}"
+                     class="card-img-top">
+
+                <div class="card-body">
+                    <h4>{{ h.nome }}</h4>
+                    <p><strong>Classe:</strong> {{ h.classe }}</p>
+                    <!-- Link para página de detalhes -->
+                    <a href="/heroi/{{ h.id }}" class="btn btn-light w-100">Detalhes</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

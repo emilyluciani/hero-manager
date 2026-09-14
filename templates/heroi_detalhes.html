@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}{{ h.nome }}{% endblock %}
+
+{% block content %}
+
+<div class="hero-detail-card">
+
+    <img src="{{ url_for('static', filename='img/herois/' + h.imagem_url) }}"
+         alt="{{ h.nome }}"
+         class="hero-detail-img"
+         onerror="this.src='{{ url_for('static', filename='img/herois/default.png') }}';">
+
+    <div class="hero-detail-info">
+        <h2 class="hero-name">{{ h.id }} - {{ h.nome }}</h2>
+        <h5 class="hero-class">{{ h.classe }}</h5>
+
+        <p class="hero-description">{{ h.descricao }}</p>
+
+        <ul class="hero-stats">
+            <li><strong>Nível:</strong> {{ h.nivel }}</li>
+            <li><strong>Força:</strong> {{ h.forca }}</li>
+            <li><strong>Defesa:</strong> {{ h.defesa }}</li>
+            <li><strong>Velocidade:</strong> {{ h.velocidade }}</li>
+            <li><strong>Habilidades:</strong> {{ h.habilidades }}</li>
+        </ul>
+
+        <form action="/adicionar" method="POST">
+            <input type="hidden" name="heroi_id" value="{{ h.id }}">
+            <button class="btn-add-team">Adicionar ao Time</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

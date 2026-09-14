@@ -1,0 +1,22 @@
+<!-- templates/home.html -->
+{% extends "base.html" %}
+{% block title %}HeroManager{% endblock %}
+
+{% block content %}
+<div class="home-container text-center">
+
+    <!-- Logo animada -->
+    <img src="{{ url_for('static', filename='img/icon.png') }}" class="home-logo">
+
+    <!-- Título com animação suave -->
+    <h2 class="home-title">Bem-vindo ao HeroManager, {{ user.nome }}!</h2>
+
+    <p class="home-subtitle">Gerencie sua equipe de heróis e torne-se uma lenda.</p>
+
+    <!-- Botões estilizados -->
+    <div class="home-buttons">
+        <a href="/herois" class="btn-hero neon-blue">⚔️ Ver Heróis</a>
+        <a href="/equipe" class="btn-hero neon-purple">🛡️ Minha Equipe</a>
+    </div>
+</div>
+{% endblock %}

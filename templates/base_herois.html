@@ -1,0 +1,29 @@
+<!-- templates/base_herois.html -->
+{% extends "base.html" %}
+{% block title %}Base de Heróis{% endblock %}
+
+{% block content %}
+<h2>Heróis na Base</h2>
+<div class="row mt-4">
+
+    {% for h in base %}
+    <div class="col-md-4 mb-4">
+        <div class="card p-2">
+            <img src="{{ h.imagem_url }}" class="card-img-top">
+
+            <div class="card-body">
+                <h4>{{ h.nome }}</h4>
+                <p>{{ h.classe }}</p>
+
+                <form action="/trocar" method="POST">
+                    <input type="hidden" name="uh_id" value="{{ h.uh_id }}">
+                    <input type="hidden" name="local" value="equipe">
+                    <button class="btn btn-success w-100">Mover para Equipe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock %}

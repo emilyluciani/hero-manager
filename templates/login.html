@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="login-container d-flex shadow p-4 rounded-4" style="background-color: #2a2a2a; max-width: 900px; width: 100%;">
+
+        <!-- Lado esquerdo: Logo animada -->
+        <div class="logo-side d-flex flex-column justify-content-center align-items-center me-4" style="flex: 1;">
+            <img src="{{ url_for('static', filename='img/icon.png') }}" class="login-logo">
+            <h2 style="color: #ffffff; text-align:center;">HeroManager</h2>
+        </div>
+
+        <!-- Lado direito: Formulário -->
+        <div class="form-side" style="flex: 1;">
+            <h3 class="text-center mb-4">Login</h3>
+
+            {% if erro %}
+            <div class="alert alert-danger">{{ erro }}</div>
+            {% endif %}
+
+            <form action="{{ url_for('login') }}" method="POST">
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input name="email" type="email" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label>Senha</label>
+                    <input type="password" name="senha" class="form-control" required>
+                </div>
+
+                <button class="btn-login-neon w-100">Entrar</button>
+            </form>
+
+            <div class="text-center mt-3">
+                <a href="/cadastro" style="color: #4bbdff;">Não possui conta? Crie uma agora!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body { background-color: #1a1a1a; color: #fff; }
+
+    /* Inputs neon */
+    .form-control {
+        background-color: #111;
+        border: 1px solid #4bbdff33;
+        color: #fff;
+        border-radius: 8px;
+    }
+
+    .form-control:focus {
+        background-color: #111;
+        border-color: #4bbdff;
+        box-shadow: 0 0 10px #4bbdff55;
+        color: #fff;
+    }
+
+    .btn-primary:hover {
+        background-color: #3399ff;
+    }
+
+    /* 🔹 Logo animada */
+    .login-logo {
+        animation: floatLogo 3s ease-in-out infinite;
+    }
+
+    @keyframes floatLogo {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+    }
+</style>
+{% endblock %}
