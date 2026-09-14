@@ -1,0 +1,265 @@
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+/* Tela Home */
+.home-container {
+    margin-top: 120px;
+    animation: fadeInUp 0.8s ease;
+}
+
+/* Logo animada */
+.home-logo {
+    width: 200px;
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px #4bbdff77);
+}
+
+.nav-link {
+    font-size: 19px !important;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+/* Título e subtítulo */
+.home-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 10px;
+    animation: fadeIn 1.2s ease;
+
+}
+
+.home-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    animation: fadeIn 1.5s ease;
+}
+
+/* Botões personalizados */
+.home-buttons {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Estilo base */
+.btn-hero {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s ease;
+    border: none;
+}
+
+/* Azul neon */
+.neon-blue {
+    background: #1b6bffcc;
+    color: #fff;
+    box-shadow: 0 0 12px #0066ff88;
+}
+
+.neon-blue:hover {
+    background: #4b9fff;
+    box-shadow: 0 0 20px #4bbdffcc;
+}
+
+/* Roxo neon */
+.neon-purple {
+    background: #7d2bff;
+    color: #fff;
+    box-shadow: 0 0 12px #9f4bff88;
+}
+
+.neon-purple:hover {
+    background: #a56bff;
+    box-shadow: 0 0 20px #c28affcc;
+}
+
+/* Animações */
+@keyframes float {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Container da navbar com flex */
+.navbar .container.d-flex {
+    gap: 20px; 
+}
+
+/* Ajuste da barra de pesquisa */
+.search-box {
+    position: relative;
+    width: 250px;
+    transition: all 0.4s ease;
+}
+
+/* Quando clica → expande */
+.search-box:focus-within {
+    width: 420px;
+}
+
+/* Logo animada login/cadastro */
+.login-logo {
+    width: 160px; 
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite; 
+    filter: drop-shadow(0 0 8px #4bbdff77); 
+}
+
+/* Botão de login com neon azul */
+.btn-login-neon {
+    padding: 10px 20px;         
+    font-size: 1rem;
+    border-radius: 8px;         
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s ease;
+    border: none;
+    background: #27608f;
+    color: #fff;
+    box-shadow: 0 0 12px #317fac88; 
+    cursor: pointer;
+}
+
+.btn-login-neon:hover {
+    background: #4b9fff;
+    box-shadow: 0 0 20px #4bbdffcc; 
+}
+
+/* Inputs do perfil */
+.col-md-5 .form-control {
+    background-color: #343434;  
+    border: 1px solid #4bbdff33; 
+    border-radius: 8px;
+    color: #fff;
+    padding: 10px 12px;
+    transition: all 0.2s ease;
+}
+
+.col-md-5 .form-control:focus {
+    border-color: #4bbdff;       
+    box-shadow: 0 0 8px #4bbdff77;
+    background-color: #343434;  
+    color: #fff;
+    outline: none;
+}
+
+/* ======= Hero Detail Page ======= */
+.hero-detail-card {
+    display: flex;
+    gap: 25px;
+    background: #222;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 12px #4bbdff33;
+    animation: fadeInUp 0.6s ease;
+}
+
+.hero-detail-img {
+    width: 240px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 0 12px #000;
+}
+
+.hero-detail-info {
+    flex: 1;
+}
+
+.hero-name {
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 0 0 8px #4bbdff88;
+}
+
+.hero-class {
+    color: #4bbdff;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.hero-description {
+    margin-top: 10px;
+    font-size: 1.05rem;
+    opacity: 0.9;
+}
+
+.hero-stats {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 18px;
+    margin-bottom: 28px;
+}
+
+.hero-stats li {
+    padding: 6px 0;
+    border-bottom: 1px solid #444;
+}
+
+.btn-add-team {
+    padding: 12px 28px;
+    background: #1b6bff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+    transition: 0.3s;
+    box-shadow: 0 0 12px #0077ff66;
+}
+
+.btn-add-team:hover {
+    background: #4b9fff;
+    box-shadow: 0 0 18px #4bbdffaa;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .hero-detail-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-detail-img {
+        width: 200px;
+        height: 250px;
+    }
+
+    .hero-stats li {
+        text-align: center;
+    }
+}
+
+.card-body h4,
+.card-body p {
+    color: #fff;
+}
